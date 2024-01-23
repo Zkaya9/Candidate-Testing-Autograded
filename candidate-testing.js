@@ -31,7 +31,7 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-    if(candidateAnswer.toLowerCase === correctAnswer.toLowerCase){
+    if(candidateAnswer.toLowerCase === correctAnswer.toLowerCase){ //making it case sensitive
       console.log("Correct!");
     }else{
       console.log("Please try again!");
