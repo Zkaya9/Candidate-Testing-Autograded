@@ -35,23 +35,28 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for (let i = 0; i < 5; i++){
-    console.log(questions[i]);
+  
+  for (let i = 0; i < questions.length; i++){
+    console.log(`${i + 1}) ${questions[i]}`); // added template literal and {i + 1}) so that each outputs 1),2) etc
   candidateAnswers[i] = readlineSync.question("Your answer: ");  //asking users for answer
   }
+  // gradeQuiz(candidateAnswers,i); //passing i in 
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-    for(let i = 0; i < questions.length; i++){
-    if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){ //making it case sensitive
-      console.log(`The correct answer is: ${correctAnswers[i]}. Your answer is: ${candidateAnswers[i]}. It's correct!`);
-    }else{
-      console.log(`The correct answer is: ${correctAnswers[i]}. Your answer is: ${candidateAnswers[i]}. It's incorrect!`);
-    }
-  }
-    
+  // for (i = 0; i < questions.length; i++){
+  //   if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+  //     console.log("Correct!");
+  //   } else {
+  //     console.log("Incorrect!");
+  //   }
+  // }
+  // console.log(`Your Answer: ${candidateAnswers[i]}`); //displays the users answer
+  // console.log(`Correct Answer: ${correctAnswers[i]}`); //displays correct answer
+  
+
 //Replace the basic feedback from TODO 1.2c with a template literal that displays each of the candidate’s responses in 
 //addition to the corresponding correct answers.
 
@@ -61,9 +66,21 @@ function gradeQuiz(candidateAnswers) {
     if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       numCorrect++;
     }
+  
+  console.log(`Your Answer: ${candidateAnswers[i]}`); //displays the users answer
+  console.log(`Correct Answer: ${correctAnswers[i]}`); //displays correct answer
+  
+  
   }
-  grade = (numCorrect / questions.length) * 100;
+  grade = (numCorrect/5) * 100;
 
+  console.log(`Overall Grade: ${grade}% (${numCorrect} of 5 responses correct)`);
+  
+if (grade >= 80) {
+  console.log(">>> Status: PASSED <<<");
+} else {
+  console.log(">>> Status: FAILED <<<");
+}
   return grade;
 }
 
